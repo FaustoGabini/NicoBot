@@ -1,14 +1,15 @@
 require("dotenv").config();
 const { Telegraf } = require("telegraf");
+const axios = require("axios");
 
 const bot = new Telegraf(process.env.TOKEN_API);
 
 bot.start((ctx) => {
   ctx.reply(
-    `¡Hola ${ctx.from.first_name}! 👋 Soy Nico, el chatbot de San Nicolas de los Arroyos.`
+    `¡Hola ${ctx.from.first_name}! 👋 Soy Nico, el chatbot no oficial de San Nicolas de los Arroyos.`
   );
   ctx.reply(
-    `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros importantes 📞`
+    `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞`
   );
 });
 
@@ -28,5 +29,39 @@ bot.hears(
     );
   }
 );
+
+async function fetchPharmacies() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  let day = today.getDate();
+  const hour = today.getHours();
+  let res = "";
+  if (hour <= 8) {
+    day -= 1;
+    res = await axios.get(
+      `https://www.laguiasn.com.ar/api/pharmacies/${year}/${month}/${day}`
+    );
+  } else {
+    res = await axios.get(
+      `https://www.laguiasn.com.ar/api/pharmacies/${year}/${month}/${day}`
+    );
+  }
+
+  return res.data;
+}
+
+bot.hears(["a", "A"], async (ctx) => {
+  const data = await fetchPharmacies();
+  const activeText = "Ver en Google Maps";
+  let cadena = "";
+  data.pharmacies.forEach((farmacia) => {
+    cadena += `▪️ ${farmacia.name}(${farmacia.address})\n [Ver en Google Maps](https://www.google.com.ar/maps/place/${farmacia.address},+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires)\n\n`;
+  });
+  ctx.reply(
+    `Farmacias de turno ${data.query}: ${data.dateShift} \n\n ${cadena}\n  `,
+    { parse_mode: "Markdown" }
+  );
+});
 
 bot.launch();
