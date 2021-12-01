@@ -9,7 +9,7 @@ bot.start((ctx) => {
     `¡Hola ${ctx.from.first_name}! 👋 Soy Nico, el chatbot no oficial de San Nicolas de los Arroyos.`
   );
   ctx.reply(
-    `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞`
+    `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞 \n C. Paradas de colectivos 🚌 \n D. Contame un chiste 🎉`
   );
 });
 
@@ -51,17 +51,43 @@ async function fetchPharmacies() {
   return res.data;
 }
 
-bot.hears(["a", "A"], async (ctx) => {
-  const data = await fetchPharmacies();
-  const activeText = "Ver en Google Maps";
-  let cadena = "";
-  data.pharmacies.forEach((farmacia) => {
-    cadena += `▪️ ${farmacia.name}(${farmacia.address})\n [Ver en Google Maps](https://www.google.com.ar/maps/place/${farmacia.address},+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires)\n\n`;
-  });
-  ctx.reply(
-    `Farmacias de turno ${data.query}: ${data.dateShift} \n\n ${cadena}\n  `,
-    { parse_mode: "Markdown" }
-  );
-});
+bot.hears(
+  [
+    "a",
+    "A",
+    "Farmacias",
+    "farmacias",
+    "Farmacias de turno",
+    "farmacias de turno",
+    "turnos",
+    "turnos de farmacias",
+  ],
+  async (ctx) => {
+    const data = await fetchPharmacies();
+    const activeText = "Ver en Google Maps";
+    let cadena = "";
+    data.pharmacies.forEach((farmacia) => {
+      cadena += `▪️ ${farmacia.name}(${farmacia.address})\n [Ver en Google Maps](https://www.google.com.ar/maps/place/${farmacia.address},+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires)\n\n`;
+    });
+    ctx.reply(
+      `Farmacias de turno ${data.query}: ${data.dateShift} \n\n ${cadena}\n  `,
+      { parse_mode: "Markdown" }
+    );
+  }
+);
+
+bot.hears(
+  ["C", "c", "paradas", "Paradas", "Paradas de colectivo"],
+  (ctx) => {
+    ctx.reply("🚧 El comando está en desarrollo 🏗️");
+  }
+);
+
+bot.hears(
+  ["D", "d", "chiste", "Chiste", "contame un chiste"],
+  (ctx) => {
+    ctx.reply("🚧 El comando está en desarrollo 🏗️");
+  }
+);
 
 bot.launch();

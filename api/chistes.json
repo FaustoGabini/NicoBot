@@ -1,0 +1,15 @@
+{
+    "chistes": [
+        {"msj": "¿Cuál es el animal con mas dientes del mundo?", 
+        "response": "El raton perez! 🐭" }, 
+        {"msj": "¿Qué le dice un gusano a otro gusano?", 
+        "response": "Me voy a dar una vuelta a la manzana 🍎" },
+         {"msj": "¿Cuál es el animal más viejo del mundo?", 
+        "response": "La vaca porque aún se ve en blanco y negro 🐮" }, 
+        {"msj": "Mamá, en el colegio me llaman distraído", 
+        "response": "Juanito, tu vives en la casa de enfrente 😂" }, 
+        {"msj": "¿Cuál es el pez que peor huele?🐟", 
+        "response": "El aPEZtoso!" }  
+        
+    ]
+}
