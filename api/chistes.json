@@ -1,5 +1,5 @@
 {
-    "chistes": [
+    "data": [
         {"msj": "¿Cuál es el animal con mas dientes del mundo?", 
         "response": "El raton perez! 🐭" }, 
         {"msj": "¿Qué le dice un gusano a otro gusano?", 
@@ -9,7 +9,10 @@
         {"msj": "Mamá, en el colegio me llaman distraído", 
         "response": "Juanito, tu vives en la casa de enfrente 😂" }, 
         {"msj": "¿Cuál es el pez que peor huele?🐟", 
-        "response": "El aPEZtoso!" }  
+        "response": "El aPEZtoso!" } , 
+        {"msj": "¿Qué le dijo un pato a su novia? 🦆", 
+        "response": "Te quiero patoa la vida"
+        } 
         
     ]
 }

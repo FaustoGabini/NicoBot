@@ -1,4 +1,5 @@
 require("dotenv").config();
+var chistes = require("./api/chistes.json");
 const { Telegraf } = require("telegraf");
 const axios = require("axios");
 
@@ -8,9 +9,11 @@ bot.start((ctx) => {
   ctx.reply(
     `¡Hola ${ctx.from.first_name}! 👋 Soy Nico, el chatbot no oficial de San Nicolas de los Arroyos.`
   );
-  ctx.reply(
-    `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞 \n C. Paradas de colectivos 🚌 \n D. Contame un chiste 🎉`
-  );
+  setTimeout(() => {
+    ctx.reply(
+      `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞 \n C. Paradas de colectivos 🚌 \n D. Contame un chiste 🎉`
+    );
+  }, 1000);
 });
 
 bot.hears(
@@ -86,7 +89,14 @@ bot.hears(
 bot.hears(
   ["D", "d", "chiste", "Chiste", "contame un chiste"],
   (ctx) => {
-    ctx.reply("🚧 El comando está en desarrollo 🏗️");
+    const chisteAleatorio =
+      chistes.data[
+        Math.floor(Math.random() * chistes.data.length)
+      ];
+    ctx.reply(chisteAleatorio.msj);
+    setTimeout(() => {
+      ctx.reply(chisteAleatorio.response);
+    }, 1000);
   }
 );
 
