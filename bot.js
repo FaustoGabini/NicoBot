@@ -10,29 +10,30 @@ const lineasColectivo = [
   [
     {
       text: "227",
-      callback_data: "501",
+      callback_data: "227",
     },
     {
       text: "230",
-      callback_data: "501",
+      callback_data: "230",
     },
     {
       text: "342",
-      callback_data: "501",
+      callback_data: "342",
     },
   ],
   [
     {
-      text: "374",
-      callback_data: "501",
+      text: "342 A",
+      callback_data: "342A",
     },
+
     {
-      text: "375",
-      callback_data: "501",
+      text: "342 C",
+      callback_data: "342B",
     },
     {
       text: "500",
-      callback_data: "501",
+      callback_data: "500",
     },
   ],
   [
@@ -42,54 +43,53 @@ const lineasColectivo = [
     },
     {
       text: "502",
-      callback_data: "501",
+      callback_data: "502",
     },
     {
       text: "503",
-      callback_data: "501",
+      callback_data: "503",
     },
   ],
   [
     {
       text: "504",
-      callback_data: "501",
+      callback_data: "504",
     },
     {
       text: "505",
-      callback_data: "501",
+      callback_data: "505",
     },
     {
       text: "506",
-      callback_data: "501",
+      callback_data: "506",
     },
   ],
   [
     {
       text: "507",
-      callback_data: "501",
+      callback_data: "507",
     },
     {
       text: "510",
-      callback_data: "501",
+      callback_data: "510",
     },
     {
       text: "512",
-      callback_data: "501",
+      callback_data: "512",
     },
   ],
-
   [
     {
-      text: "342 A",
-      callback_data: "501",
+      text: "520A",
+      callback_data: "520A",
     },
     {
-      text: "342 B",
-      callback_data: "501",
+      text: "520B",
+      callback_data: "520B",
     },
     {
-      text: "342 C",
-      callback_data: "501",
+      text: "522",
+      callback_data: "522",
     },
   ],
 ];
@@ -103,7 +103,7 @@ bot.start((ctx) => {
   );
   setTimeout(() => {
     ctx.reply(
-      `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞 \n C. Horarios de colectivos 🚌 \n D. Contame un chiste 🎉`
+      `¿Por dónde empezamos? 👇 \n A. Farmacias de turno \n B. Numeros de emergencia 📞 \n C. Horarios de colectivos 🚌 \n D. Turismo \n E. Contame un chiste 🎉`
     );
   }, 1000);
 });
@@ -159,7 +159,7 @@ bot.hears(
   ],
   async (ctx) => {
     const data = await fetchPharmacies();
-    const activeText = "Ver en Google Maps";
+
     let cadena = "";
     data.pharmacies.forEach((farmacia) => {
       cadena += `▪️ ${farmacia.name}(${farmacia.address})\n [Ver en Google Maps](https://www.google.com.ar/maps/place/${farmacia.address},+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires)\n\n`;
@@ -179,6 +179,8 @@ bot.hears(
     "Horarios",
     "Horarios de colectivo",
     "Horarios cole",
+    "colectivos",
+    "Colectivos",
   ],
   (ctx) => {
     bot.telegram.sendMessage(
@@ -196,7 +198,56 @@ bot.hears(
 );
 
 bot.hears(
-  ["D", "d", "chiste", "Chiste", "contame un chiste"],
+  [
+    "D",
+    "d",
+    "turismo",
+    "Turismo, comida, restaurantes, hoteles, alojamiento, Excursiones, excursiones",
+  ],
+  (ctx) => {
+    ctx.reply("Bienvenido a la ciudad del Acuerdo 🤗");
+
+    bot.telegram.sendMessage(
+      ctx.chat.id,
+      "Genial! ¿Por dónde empezamos? 👇",
+      {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: "Agenda",
+                url: "https://www.descubrisannicolas.com.ar/agenda/",
+              },
+            ],
+            [
+              {
+                text: "¿Dónde quedarme?",
+                url: "https://www.descubrisannicolas.com.ar/lugares-donde-quedarse/",
+              },
+            ],
+            [
+              {
+                text: "¿Dónde comer?",
+                url: "https://www.descubrisannicolas.com.ar/agenda/",
+              },
+            ],
+            [
+              {
+                text: "Descubrí San Nicolás",
+                url: "https://www.descubrisannicolas.com.ar/lugares-de-interes/",
+              },
+            ],
+          ],
+          resize_keyboard: true,
+          one_time_keyboard: true,
+        },
+      }
+    );
+  }
+);
+
+bot.hears(
+  ["E", "e", "chiste", "Chiste", "contame un chiste"],
   (ctx) => {
     const chisteAleatorio =
       chistes.data[
@@ -212,12 +263,61 @@ bot.hears(
   }
 );
 
-bot.action(["501"], (ctx) => {
-  ctx.reply("Estos son los horarios de la linea 501");
+bot.action(["227"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 227");
   ctx.telegram
     .sendDocument(ctx.from.id, {
-      source: "./assets/501.pdf",
-      filename: "Horarios501.pdf",
+      source: "./assets/227.pdf",
+      filename: "Horarios227.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["230"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 230");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/230.pdf",
+      filename: "Horarios230.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["342"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 342");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/342.pdf",
+      filename: "Horarios342.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+
+bot.action(["342A"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 342A");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/342A.pdf",
+      filename: "Horarios342A.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["342C"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 342C");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/342C.pdf",
+      filename: "Horarios342C.pdf",
     })
     .catch(function (error) {
       console.log(error);
