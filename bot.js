@@ -324,5 +324,161 @@ bot.action(["342C"], (ctx) => {
       ctx.reply("Lo siento no encontre los horarios");
     });
 });
+bot.action(["500"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 500");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/500.pdf",
+      filename: "Horarios500.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["501"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 501");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/501.pdf",
+      filename: "Horarios501.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["502"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 502");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/502.pdf",
+      filename: "Horarios502.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["503"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 503");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/503.pdf",
+      filename: "Horarios503.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["504"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 504");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/504.pdf",
+      filename: "Horarios504.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["505"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 505");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/505.pdf",
+      filename: "Horarios505.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["506"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 506");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/506.pdf",
+      filename: "Horarios506.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["507"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 507");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/507.pdf",
+      filename: "Horarios507.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["510"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 510");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/510.pdf",
+      filename: "Horarios510.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["512"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 512");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/512.pdf",
+      filename: "Horarios512.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["520A"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 520A");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/520A.pdf",
+      filename: "Horarios520A.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["520B"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 520B");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/520B.pdf",
+      filename: "Horarios520B.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
+bot.action(["522"], (ctx) => {
+  ctx.reply("Estos son los horarios de la linea 522");
+  ctx.telegram
+    .sendDocument(ctx.from.id, {
+      source: "./assets/522.pdf",
+      filename: "Horarios522.pdf",
+    })
+    .catch(function (error) {
+      console.log(error);
+      ctx.reply("Lo siento no encontre los horarios");
+    });
+});
 
 bot.launch();
